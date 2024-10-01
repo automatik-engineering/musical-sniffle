@@ -1,0 +1,246 @@
+{"dialogs": [
+  {
+      "id": "addtodo",
+      "isRoot": false,
+      "displayName": "addtodo",
+      "content": {
+          "$kind": "Microsoft.AdaptiveDialog",
+          "$designer": {
+              "id": "808722"
+          },
+          "rules": [
+              {
+                  "$kind": "Microsoft.OnEvent",
+                  "$designer": {
+                      "id": "335456"
+                  },
+                  "steps": []
+              }
+          ]
+      },
+      "triggers": [
+          {
+              "id": "rules[0]",
+              "displayName": "",
+              "type": "Microsoft.OnEvent",
+              "isIntent": false
+          }
+      ]
+  },
+  {
+      "id": "cleartodo",
+      "isRoot": false,
+      "displayName": "cleartodo",
+      "content": {
+          "$kind": "Microsoft.AdaptiveDialog",
+          "$designer": {
+              "id": "316336"
+          },
+          "rules": [
+              {
+                  "$kind": "Microsoft.OnEvent",
+                  "$designer": {
+                      "id": "480162"
+                  },
+                  "events": [
+                      "beginDialog"
+                  ],
+                  "steps": []
+              }
+          ]
+      },
+      "triggers": [
+          {
+              "id": "rules[0]",
+              "displayName": "",
+              "type": "Microsoft.OnEvent",
+              "isIntent": false
+          }
+      ]
+  },
+  {
+      "id": "deletetodo",
+      "isRoot": false,
+      "displayName": "deletetodo",
+      "content": {
+          "$kind": "Microsoft.AdaptiveDialog",
+          "$designer": {
+              "id": "114909"
+          },
+          "autoEndDialog": true,
+          "$schema": "../../app.schema",
+          "rules": [
+              {
+                  "$kind": "Microsoft.OnEvent",
+                  "$designer": {
+                      "id": "768658"
+                  },
+                  "steps": []
+              }
+          ]
+      },
+      "triggers": [
+          {
+              "id": "rules[0]",
+              "displayName": "",
+              "type": "Microsoft.OnEvent",
+              "isIntent": false
+          }
+      ]
+  },
+  {
+      "id": "todobot",
+      "isRoot": true,
+      "displayName": "ToDoBot",
+      "content": {
+          "$kind": "Microsoft.AdaptiveDialog",
+          "$designer": {
+              "id": "288769",
+              "description": "This is a bot that demonstrates how to manage a ToDo list using regular expressions."
+          },
+          "rules": [
+              {
+                  "$kind": "Microsoft.OnConversationUpdateActivity",
+                  "$designer": {
+                      "id": "376720"
+                  },
+                  "steps": []
+              },
+              {
+                  "$kind": "Microsoft.OnIntent",
+                  "$designer": {
+                      "id": "064505"
+                  },
+                  "steps": [],
+                  "intent": "AddIntent"
+              },
+              {
+                  "$kind": "Microsoft.OnIntent",
+                  "$designer": {
+                      "id": "114961"
+                  },
+                  "steps": [],
+                  "intent": "DeleteIntent"
+              },
+              {
+                  "$kind": "Microsoft.OnIntent",
+                  "$designer": {
+                      "id": "088050"
+                  },
+                  "steps": [],
+                  "intent": "ClearIntent"
+              },
+              {
+                  "$kind": "Microsoft.OnIntent",
+                  "$designer": {
+                      "id": "633942"
+                  },
+                  "steps": [],
+                  "intent": "HelpIntent"
+              },
+              {
+                  "$kind": "Microsoft.OnIntent",
+                  "$designer": {
+                      "id": "794124"
+                  },
+                  "steps": [],
+                  "intent": "ShowIntent"
+              },
+              {
+                  "$kind": "Microsoft.OnIntent",
+                  "$designer": {
+                      "id": "179728"
+                  },
+                  "steps": [],
+                  "intent": "CancelIntent"
+              },
+              {
+                  "$kind": "Microsoft.OnUnknownIntent",
+                  "$designer": {
+                      "id": "677447"
+                  },
+                  "steps": []
+              }
+          ],
+          "$schema": "../../app.schema"
+      },
+      "triggers": [
+          {
+              "id": "rules[0]",
+              "displayName": "",
+              "type": "Microsoft.OnConversationUpdateActivity",
+              "isIntent": false
+          },
+          {
+              "id": "rules[1]",
+              "displayName": "#AddIntent",
+              "type": "Microsoft.OnIntent",
+              "isIntent": true
+          },
+          {
+              "id": "rules[2]",
+              "displayName": "#DeleteIntent",
+              "type": "Microsoft.OnIntent",
+              "isIntent": true
+          },
+          {
+              "id": "rules[3]",
+              "displayName": "#ClearIntent",
+              "type": "Microsoft.OnIntent",
+              "isIntent": true
+          },
+          {
+              "id": "rules[4]",
+              "displayName": "#HelpIntent",
+              "type": "Microsoft.OnIntent",
+              "isIntent": true
+          },
+          {
+              "id": "rules[5]",
+              "displayName": "#ShowIntent",
+              "type": "Microsoft.OnIntent",
+              "isIntent": true
+          },
+          {
+              "id": "rules[6]",
+              "displayName": "#CancelIntent",
+              "type": "Microsoft.OnIntent",
+              "isIntent": true
+          },
+          {
+              "id": "rules[7]",
+              "displayName": "",
+              "type": "Microsoft.OnUnknownIntent",
+              "isIntent": false
+          }
+      ]
+  },
+  {
+      "id": "showtodos",
+      "isRoot": false,
+      "displayName": "showtodos",
+      "content": {
+          "$kind": "Microsoft.AdaptiveDialog",
+          "$designer": {
+              "id": "709692"
+          },
+          "rules": [
+              {
+                  "$kind": "Microsoft.OnEvent",
+                  "$designer": {
+                      "id": "783343"
+                  },
+                  "steps": []
+              }
+          ]
+      },
+      "triggers": [
+          {
+              "id": "rules[0]",
+              "displayName": "",
+              "type": "Microsoft.OnEvent",
+              "isIntent": false
+          }
+      ]
+  }
+]}

@@ -1,0 +1,22 @@
+{
+  "name": "samples",
+  "version": "1.0.0",
+  "description": "providing samples to Composer core",
+  "main": "dist/extension.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "build": "node ../scripts/build.js",
+    "watch": "yarn build --watch"
+  },
+  "resolutions": {
+    "terser": "^5.14.2"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.25",
+    "ts-loader": "9.5.1",
+    "typescript": "5.4.2",
+    "webpack": "5.94.0",
+    "webpack-cli": "5.1.4"
+  }
+}

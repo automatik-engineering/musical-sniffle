@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./build/",
+    "sourceMap": true,
+    "target": "es6",
+    "baseUrl": "."
+  },
+  "include": [
+    "src/**/*.ts",
+    "scripts/*.js", // include scripts to get proper linting
+    "__tests__", // intellisense
+    "src/preload.js"
+  ]
+}

@@ -1,0 +1,7 @@
+build/
+dist/
+locales/en-US-pseudo.json
+l10ntemp/
+oneauth-temp
+customElectron
+electron-builder-config-*.json

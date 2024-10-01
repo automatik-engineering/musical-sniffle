@@ -1,0 +1,23 @@
+{
+  "name": "mockRemotePublish",
+  "version": "1.0.0",
+  "description": "publish assets to a remote URL",
+  "main": "dist/extension.js",
+  "scripts": {
+    "build": "node ../scripts/build.js",
+    "watch": "yarn build --watch"
+  },
+  "composer": {
+    "enabled": false
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "8.3.2"
+  },
+  "devDependencies": {
+    "@botframework-composer/types": "file:../../Composer/packages/types",
+    "@types/node": "20.11.25",
+    "@types/uuid": "9.0.8"
+  }
+}

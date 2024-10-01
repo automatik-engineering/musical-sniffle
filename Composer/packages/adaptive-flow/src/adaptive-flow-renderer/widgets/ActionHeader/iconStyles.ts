@@ -1,0 +1,17 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import { css } from '@emotion/react';
+
+export const iconCss = (size: number, color?: string) => {
+  return css`
+    width: ${size}px;
+    height: ${size}px;
+    border-radius: 50%;
+    background-color: ${color || 'black'};
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `;
+};

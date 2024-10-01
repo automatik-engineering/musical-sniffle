@@ -1,0 +1,32 @@
+{
+  "files.trimTrailingWhitespace": true,
+  "files.associations": {
+    "*.dialog": "json",
+    "*.botproj": "json",
+    "*.schema": "json"
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true
+  },
+  "eslint.packageManager": "yarn",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.workingDirectories": ["./Composer"],
+  "typescript.tsdk": "./Composer/node_modules/typescript/lib",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "json.schemas": [
+    {
+      "fileMatch": [".composer/settings.json"],
+      "url": "http://localhost:5000/api/extensions/settings/schema.json"
+    }
+  ],
+  "json.schemaDownload.enable": true
+}

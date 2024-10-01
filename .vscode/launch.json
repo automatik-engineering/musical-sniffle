@@ -1,0 +1,120 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "attach",
+      "name": "Attach to Chrome",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Server: Attach",
+      "port": 9228,
+      "sourceMaps": true
+    },
+    {
+      "name": "LU LSP Server",
+      "type": "node",
+      "request": "launch",
+      "args": [
+        "${workspaceFolder}/Composer/packages/tools/language-servers/language-understanding/demo/src/server.ts"
+      ],
+      "runtimeArgs": [
+        "--nolazy",
+        "-r",
+        "${workspaceFolder}/Composer/node_modules/ts-node/register"
+      ],
+      "sourceMaps": true,
+      "cwd": "${workspaceFolder}/Composer/packages/tools/language-servers/language-understanding/demo/src",
+      "protocol": "inspector"
+    },
+    {
+      "name": "LG LSP Server",
+      "type": "node",
+      "request": "launch",
+      "args": [
+        "${workspaceFolder}/Composer/packages/tools/language-servers/language-generation/demo/src/server.ts"
+      ],
+      "runtimeArgs": [
+        "--nolazy",
+        "-r",
+        "${workspaceFolder}/Composer/node_modules/ts-node/register"
+      ],
+      "sourceMaps": true,
+      "cwd": "${workspaceFolder}/Composer/packages/tools/language-servers/language-generation/demo/src",
+      "protocol": "inspector"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Server: Launch",
+      "program": "${workspaceFolder}/Composer/packages/server/build/init.js",
+      "env": {
+        "DEBUG": "composer*"
+      },
+      "restart": true,
+      "outFiles": [
+        "${workspaceRoot}/Composer/packages/server/build/**/*.js",
+        "${workspaceRoot}/extensions/**/*.js"
+      ],
+      "sourceMaps": true,
+      "preLaunchTask": "server: build",
+      "outputCapture": "std",
+      "cwd": "${workspaceFolder}/Composer/packages/server"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "protocol": "inspector",
+      "name": "Jest Debug",
+      "program": "${workspaceRoot}/Composer/node_modules/jest/bin/jest",
+      "stopOnEntry": false,
+      "args": ["--runInBand", "--env=jsdom", "--config=jest.config.js"],
+      "runtimeArgs": ["--inspect-brk"],
+      "cwd": "${workspaceRoot}/Composer/packages/server",
+      "sourceMaps": true,
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Electron Main Process",
+      "runtimeExecutable": "${workspaceRoot}/Composer/node_modules/.bin/electron",
+      "windows": {
+        "runtimeExecutable": "${workspaceRoot}/Composer/node_modules/.bin/electron.cmd"
+      },
+      "args": ["${workspaceRoot}/Composer/packages/electron-server"],
+      "env": {
+        "NODE_ENV": "development",
+        "DEBUG": "composer*",
+        "COMPOSER_DEV_TOOLS": "true",
+        "COMPOSER_ENABLE_ONEAUTH": "true"
+      },
+      "outputCapture": "std",
+      "preLaunchTask": "electron: build",
+      "outFiles": [
+        "${workspaceRoot}/Composer/packages/electron-server/build/**/*.js",
+        "${workspaceRoot}/Composer/packages/server/build/**/*.js",
+        "${workspaceRoot}/extensions/**/*.js"
+      ],
+      "sourceMaps": true
+    },
+    {
+      "name": "Debug current jest test",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceRoot}/Composer/node_modules/jest/bin/jest",
+        "--runInBand"
+      ],
+      "args": ["${fileBasename}"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    }
+  ]
+}

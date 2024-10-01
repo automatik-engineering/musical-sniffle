@@ -1,0 +1,508 @@
+{
+  "Microsoft.AdaptiveDialog": {
+    "form": {
+      "description": "Események és műveletek gyűjteményén keresztül konfigurál egy adatalapú párbeszédet.",
+      "label": "Adaptív párbeszédpanel",
+      "properties": {
+        "recognizer": {
+          "description": "A felhasználó által mondottak megértéséhez a párbeszédnek olyan értelmezőre van szüksége, amely a felhasználók által használható példaszavakat és -mondatokat tartalmaz.",
+          "label": "Nyelvtanulás"
+        }
+      }
+    }
+  },
+  "Microsoft.Ask": {
+    "flow": {
+      "footer": {
+        "description": "= Default operation"
+      }
+    },
+    "form": {
+      "label": "Válasz küldése kérdés feltevéséhez",
+      "subtitle": "Tevékenység kérése"
+    }
+  },
+  "Microsoft.AttachmentInput": {
+    "form": {
+      "label": "Fájl vagy melléklet kérése",
+      "subtitle": "Melléklet bemenete"
+    }
+  },
+  "Microsoft.BeginDialog": {
+    "flow": {
+      "footer": {
+        "description": "= Return value"
+      }
+    },
+    "form": {
+      "label": "Új párbeszéd elkezdése",
+      "subtitle": "Párbeszéd elkezdése"
+    }
+  },
+  "Microsoft.BeginSkill": {
+    "flow": {
+      "footer": {
+        "description": "= Result"
+      }
+    },
+    "form": {
+      "label": "Csatlakozás egy készséghez",
+      "subtitle": "Készség párbeszéde"
+    }
+  },
+  "Microsoft.BreakLoop": {
+    "form": {
+      "label": "Ciklus megszakítása",
+      "subtitle": "Ciklus megszakítása"
+    }
+  },
+  "Microsoft.CancelAllDialogs": {
+    "flow": {
+      "body": {
+        "description": "(Event)"
+      }
+    },
+    "form": {
+      "label": "Az összes aktív párbeszéd megszakítása",
+      "subtitle": "Az összes párbeszéd megszakítása"
+    }
+  },
+  "Microsoft.ChoiceInput": {
+    "form": {
+      "label": "Adatkérés több választási lehetőséggel",
+      "subtitle": "Választási lehetőség bemenete"
+    }
+  },
+  "Microsoft.ConfirmInput": {
+    "form": {
+      "label": "Megerősítés kérése",
+      "subtitle": "Bemenet megerősítése"
+    }
+  },
+  "Microsoft.ContinueLoop": {
+    "form": {
+      "label": "Ciklus folytatása",
+      "subtitle": "Ciklus folytatása"
+    }
+  },
+  "Microsoft.DateTimeInput": {
+    "form": {
+      "label": "Dátum vagy idő kérése",
+      "subtitle": "Dátum- és időbevitel"
+    }
+  },
+  "Microsoft.DebugBreak": {
+    "form": {
+      "label": "Hibakeresési töréspont"
+    }
+  },
+  "Microsoft.DeleteProperties": {
+    "form": {
+      "label": "Tulajdonságok törlése",
+      "subtitle": "Tulajdonságok törlése"
+    }
+  },
+  "Microsoft.DeleteProperty": {
+    "form": {
+      "label": "Egy tulajdonság törlése",
+      "subtitle": "Tulajdonság törlése"
+    }
+  },
+  "Microsoft.EditActions": {
+    "form": {
+      "label": "Aktív párbeszéd módosítása",
+      "subtitle": "Műveletek szerkesztése"
+    }
+  },
+  "Microsoft.EditArray": {
+    "flow": {
+      "footer": {
+        "description": "= Result"
+      }
+    },
+    "form": {
+      "label": "Tömbtulajdonság szerkesztése",
+      "subtitle": "Tömb szerkesztése"
+    }
+  },
+  "Microsoft.EmitEvent": {
+    "flow": {
+      "body": {
+        "description": "(Event)"
+      }
+    },
+    "form": {
+      "label": "Egyéni esemény továbbítása",
+      "subtitle": "Esemény továbbítása"
+    }
+  },
+  "Microsoft.EndDialog": {
+    "form": {
+      "label": "A párbeszéd bezárása",
+      "subtitle": "Párbeszéd bezárása"
+    }
+  },
+  "Microsoft.EndTurn": {
+    "form": {
+      "label": "Kör befejezése",
+      "subtitle": "Kör befejezése"
+    }
+  },
+  "Microsoft.Foreach": {
+    "form": {
+      "label": "Ciklus: Minden egyes elemhez",
+      "subtitle": "Mindegyikhez"
+    }
+  },
+  "Microsoft.ForeachPage": {
+    "form": {
+      "label": "Ciklus: Minden egyes oldalhoz (több elem)",
+      "subtitle": "Minden egyes oldalhoz"
+    }
+  },
+  "Microsoft.GetActivityMembers": {
+    "flow": {
+      "body": {
+        "description": "= ActivityId"
+      },
+      "footer": {
+        "description": "= Result property"
+      }
+    }
+  },
+  "Microsoft.GetConversationMembers": {
+    "flow": {
+      "footer": {
+        "description": "= Result property"
+      }
+    }
+  },
+  "Microsoft.HttpRequest": {
+    "flow": {
+      "footer": {
+        "description": "= Result property"
+      }
+    },
+    "form": {
+      "label": "HTTP-kérelem küldése",
+      "subtitle": "HTTP-kérelem"
+    }
+  },
+  "Microsoft.IfCondition": {
+    "form": {
+      "label": "Ág: ha/máskülönben",
+      "subtitle": "Ha feltétel"
+    }
+  },
+  "Microsoft.LogAction": {
+    "form": {
+      "label": "Naplózás konzolra",
+      "subtitle": "Naplózási művelet"
+    }
+  },
+  "Microsoft.NumberInput": {
+    "form": {
+      "label": "Szám kérése",
+      "subtitle": "Számbevitel"
+    }
+  },
+  "Microsoft.OAuthInput": {
+    "flow": {
+      "footer": {
+        "description": "= Token property"
+      }
+    },
+    "form": {
+      "label": "OAuth-bejelentkezés",
+      "subtitle": "OAuth-bemenet"
+    }
+  },
+  "Microsoft.OnActivity": {
+    "form": {
+      "label": "Tevékenységek",
+      "subtitle": "Tevékenység érkezett"
+    },
+    "trigger": {
+      "label": "Activities (Activity received)",
+      "submenu": {
+        "label": "Activities"
+      }
+    }
+  },
+  "Microsoft.OnAssignEntity": {
+    "form": {
+      "label": "Feltétel kezelése entitás hozzárendelésekor",
+      "subtitle": "EntityAssigned tevékenység"
+    }
+  },
+  "Microsoft.OnBeginDialog": {
+    "form": {
+      "label": "Elindított párbeszéd",
+      "subtitle": "Párbeszédesemény indítása"
+    },
+    "trigger": {
+      "label": "Dialog started (Begin dialog event)",
+      "submenu": {
+        "label": "Dialog events"
+      }
+    }
+  },
+  "Microsoft.OnCancelDialog": {
+    "form": {
+      "label": "Párbeszéd megszakítva",
+      "subtitle": "Párbeszédesemény megszakítása"
+    },
+    "trigger": {
+      "label": "Dialog cancelled (Cancel dialog event)"
+    }
+  },
+  "Microsoft.OnChooseIntent": {
+    "trigger": {
+      "label": "Duplicated intents recognized"
+    }
+  },
+  "Microsoft.OnCondition": {
+    "form": {
+      "label": "Feltétel kezelése",
+      "subtitle": "Feltétel"
+    }
+  },
+  "Microsoft.OnConversationUpdateActivity": {
+    "form": {
+      "description": "A felhasználó által a robottal kezdeményezett új beszélgetés megkezdésekor aktivált események kezelése.",
+      "label": "Üdvözlés",
+      "subtitle": "ConversationUpdate tevékenység"
+    },
+    "trigger": {
+      "label": "Greeting (ConversationUpdate activity)"
+    }
+  },
+  "Microsoft.OnDialogEvent": {
+    "form": {
+      "label": "Párbeszédesemények",
+      "subtitle": "Párbeszédesemény"
+    },
+    "trigger": {
+      "label": "Custom events"
+    }
+  },
+  "Microsoft.OnEndOfActions": {
+    "form": {
+      "label": "Feltétel kezelése a műveletek befejezése után",
+      "subtitle": "EndOfActions tevékenység"
+    }
+  },
+  "Microsoft.OnEndOfConversationActivity": {
+    "form": {
+      "label": "A beszélgetés véget ért",
+      "subtitle": "EndOfConversation tevékenység"
+    },
+    "trigger": {
+      "label": "Conversation ended (EndOfConversation activity)"
+    }
+  },
+  "Microsoft.OnError": {
+    "form": {
+      "label": "Hiba történt",
+      "subtitle": "Hibaesemény"
+    },
+    "trigger": {
+      "label": "Error occurred (Error event)"
+    }
+  },
+  "Microsoft.OnEventActivity": {
+    "form": {
+      "label": "Esemény érkezett",
+      "subtitle": "Eseménytevékenység"
+    },
+    "trigger": {
+      "label": "Event received (Event activity)"
+    }
+  },
+  "Microsoft.OnHandoffActivity": {
+    "form": {
+      "label": "Átadás valós személynek",
+      "subtitle": "Átadási tevékenység"
+    },
+    "trigger": {
+      "label": "Handover to human (Handoff activity)"
+    }
+  },
+  "Microsoft.OnInstallationUpdateActivity": {
+    "form": {
+      "label": "Telepítés frissítve",
+      "subtitle": "Telepítés – tevékenység frissítve"
+    }
+  },
+  "Microsoft.OnIntent": {
+    "form": {
+      "label": "Felismert szándék",
+      "subtitle": "Felismert szándék"
+    },
+    "trigger": {
+      "label": "Intent recognized"
+    }
+  },
+  "Microsoft.OnInvokeActivity": {
+    "form": {
+      "label": "Beszélgetés meghívva",
+      "subtitle": "Meghívási tevékenység"
+    },
+    "trigger": {
+      "label": "Conversation invoked (Invoke activity)"
+    }
+  },
+  "Microsoft.OnMessageActivity": {
+    "form": {
+      "label": "Fogadott üzenet",
+      "subtitle": "Fogadott üzenet tevékenység"
+    },
+    "trigger": {
+      "label": "Message received (Message received activity)"
+    }
+  },
+  "Microsoft.OnMessageDeleteActivity": {
+    "form": {
+      "label": "Üzenet törölve",
+      "subtitle": "Üzenet törölve tevékenység"
+    },
+    "trigger": {
+      "label": "Message deleted (Message deleted activity)"
+    }
+  },
+  "Microsoft.OnMessageReactionActivity": {
+    "form": {
+      "label": "Üzenetre érkezett reagálás",
+      "subtitle": "Üzenetre érkezett reagálás tevékenység"
+    },
+    "trigger": {
+      "label": "Message reaction (Message reaction activity)"
+    }
+  },
+  "Microsoft.OnMessageUpdateActivity": {
+    "form": {
+      "label": "Üzenet frissítve",
+      "subtitle": "Üzenet frissítve tevékenység"
+    },
+    "trigger": {
+      "label": "Message updated (Message updated activity)"
+    }
+  },
+  "Microsoft.OnQnAMatch": {
+    "trigger": {
+      "label": "QnA Intent recognized"
+    }
+  },
+  "Microsoft.OnRepromptDialog": {
+    "form": {
+      "label": "Ismételt figyelmeztetés bevitelhez",
+      "subtitle": "Párbeszédesemény ismételt figyelmeztetése"
+    },
+    "trigger": {
+      "label": "Re-prompt for input (Reprompt dialog event)"
+    }
+  },
+  "Microsoft.OnTypingActivity": {
+    "form": {
+      "label": "A felhasználó éppen gépel",
+      "subtitle": "Gépelési tevékenység"
+    },
+    "trigger": {
+      "label": "User is typing (Typing activity)"
+    }
+  },
+  "Microsoft.OnUnknownIntent": {
+    "form": {
+      "label": "Ismeretlen szándék",
+      "subtitle": "Ismeretlen szándék felismerve"
+    },
+    "trigger": {
+      "label": "Unknown intent"
+    }
+  },
+  "Microsoft.RepeatDialog": {
+    "form": {
+      "label": "A párbeszéd ismétlése",
+      "subtitle": "Párbeszéd ismétlése"
+    }
+  },
+  "Microsoft.ReplaceDialog": {
+    "form": {
+      "label": "A párbeszéd cseréje",
+      "subtitle": "Párbeszéd cseréje"
+    }
+  },
+  "Microsoft.SendActivity": {
+    "form": {
+      "label": "Válaszküldés",
+      "subtitle": "Tevékenység küldése"
+    }
+  },
+  "Microsoft.SendHandoffActivity": {
+    "form": {
+      "label": "Send a handoff request",
+      "subtitle": "Send Handoff Activity"
+    },
+    "menu": {
+      "label": "Send Handoff Event"
+    }
+  },
+  "Microsoft.SetProperties": {
+    "form": {
+      "label": "Tulajdonságok beállítása",
+      "subtitle": "Tulajdonságok beállítása"
+    }
+  },
+  "Microsoft.SetProperty": {
+    "form": {
+      "label": "Tulajdonság beállítása",
+      "subtitle": "Tulajdonság beállítása"
+    }
+  },
+  "Microsoft.SignOutUser": {
+    "form": {
+      "label": "Felhasználó kijelentkeztetése",
+      "subtitle": "Felhasználó kijelentkeztetése"
+    }
+  },
+  "Microsoft.SwitchCondition": {
+    "form": {
+      "label": "Ág: Kapcsoló (több lehetőség)",
+      "subtitle": "Kapcsolófeltétel"
+    }
+  },
+  "Microsoft.TextInput": {
+    "form": {
+      "label": "Szöveg kérése",
+      "subtitle": "Szövegbevitel"
+    }
+  },
+  "Microsoft.ThrowException": {
+    "flow": {
+      "body": {
+        "description": "= ErrorValue"
+      }
+    },
+    "form": {
+      "label": "Kivétel előidézése",
+      "subtitle": "Kivétel előidézése"
+    }
+  },
+  "Microsoft.TraceActivity": {
+    "form": {
+      "label": "Nyomkövetési esemény továbbítása",
+      "subtitle": "Nyomkövetési tevékenység"
+    }
+  },
+  "Microsoft.UpdateActivity": {
+    "flow": {
+      "header": {
+        "title": "Update activity"
+      }
+    },
+    "form": {
+      "label": "Update an activity",
+      "subtitle": "Update Activity"
+    }
+  }
+}

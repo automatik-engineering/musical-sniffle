@@ -1,0 +1,19 @@
+{
+  "name": "@bfc/built-in-functions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "rimraf ./lib && tsc --build tsconfig.build.json",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@botframework-composer/test-utils": "*",
+    "rimraf": "3.0.2"
+  },
+  "author": "Microsoft",
+  "license": "MIT",
+  "dependencies": {
+    "tslib": "2.6.2"
+  }
+}

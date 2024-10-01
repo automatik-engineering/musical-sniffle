@@ -1,0 +1,13 @@
+dist/
+junit.xml
+
+cypress/screenshots
+cypress/results
+cypress/videos
+
+TestBots/
+
+l10ntemp/
+
+# remote extensions
+.composer

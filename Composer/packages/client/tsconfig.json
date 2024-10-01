@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "build",
+    "allowJs": true,
+    "module": "esnext",
+    "declaration": false,
+    "declarationMap": false,
+    "types": ["@emotion/react/types/css-prop", "webpack-env", "jest", "@testing-library/jest-dom"]
+  },
+  "include": ["./src/**/*", "./__tests__/**/*", "./extension-container/**/*"]
+}

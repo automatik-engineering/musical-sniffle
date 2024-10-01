@@ -1,0 +1,48 @@
+{
+  "name": "@bfc/ui-plugin-select-skill-dialog",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Botframework Composer plugin that adds a custom form UI for selecting a skill dialog.",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "start": "tsc --watch --preserveWatchOutput",
+    "build": "tsc --build ./tsconfig.build.json",
+    "lint": "eslint --quiet src",
+    "prepare": "yarn build",
+    "extract": "cross-env NODE_ENV=production format-message extract -g underscored_crc32 -o locales/en-US.json src/**/*.ts src/**/*.tsx"
+  },
+  "keywords": [
+    "botframework",
+    "composer"
+  ],
+  "author": "v-thdurn@microsoft.com",
+  "license": "MIT",
+  "peerDependencies": {
+    "@bfc/adaptive-form": "*",
+    "@bfc/extension-client": "*",
+    "@fluentui/react": "^8.83.1",
+    "@fluentui/style-utilities": "^8.6.0",
+    "@fluentui/theme": "2.5.0",
+    "format-message": "^6.2.3",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "@bfc/adaptive-form": "*",
+    "@bfc/extension-client": "*",
+    "@botframework-composer/test-utils": "*",
+    "@types/react": "16.9.23",
+    "@types/react-dom": "16.9.5",
+    "format-message": "6.2.4",
+    "format-message-cli": "6.2.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.1.3",
+    "tslib": "2.6.2"
+  }
+}

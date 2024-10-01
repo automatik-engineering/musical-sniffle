@@ -1,0 +1,31 @@
+{
+  "name": "@botframework-composer/types",
+  "version": "0.0.2",
+  "description": "Shared types for Botframework Composer..",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "yarn clean && tsc",
+    "clean": "rimraf lib .swc",
+    "lint": "eslint --quiet src",
+    "prepublishOnly": "npm run lint && npm run build"
+  },
+  "author": "andy.brown@microsoft.com",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "4.16.1",
+    "@types/passport": "^1.0.4",
+    "axios": "^1.7.7",
+    "botframework-schema": "^4.11.1",
+    "express-serve-static-core": "0.1.1",
+    "json-schema": "0.4.0",
+    "tslib": "2.6.2"
+  },
+  "devDependencies": {
+    "eslint": "8.57.0",
+    "rimraf": "3.0.2",
+    "typescript": "5.4.2"
+  }
+}

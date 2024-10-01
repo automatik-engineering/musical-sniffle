@@ -1,0 +1,508 @@
+{
+  "Microsoft.AdaptiveDialog": {
+    "form": {
+      "description": "Configura un cuadro de diálogo controlado por datos a través de una colección de eventos y acciones.",
+      "label": "Cuadro de diálogo adaptable",
+      "properties": {
+        "recognizer": {
+          "description": "Para comprender lo que el usuario dice, el cuadro de diálogo necesita un \"reconocedor\"; este incluye palabras de ejemplo y frases que los usuarios pueden utilizar.",
+          "label": "Reconocimiento del lenguaje"
+        }
+      }
+    }
+  },
+  "Microsoft.Ask": {
+    "flow": {
+      "footer": {
+        "description": "= Default operation"
+      }
+    },
+    "form": {
+      "label": "Enviar una respuesta para formular una pregunta",
+      "subtitle": "Actividad de la pregunta"
+    }
+  },
+  "Microsoft.AttachmentInput": {
+    "form": {
+      "label": "Solicitar un archivo o datos adjuntos",
+      "subtitle": "Entrada de datos adjuntos"
+    }
+  },
+  "Microsoft.BeginDialog": {
+    "flow": {
+      "footer": {
+        "description": "= Return value"
+      }
+    },
+    "form": {
+      "label": "Iniciar un nuevo cuadro de diálogo",
+      "subtitle": "Iniciar cuadro de diálogo"
+    }
+  },
+  "Microsoft.BeginSkill": {
+    "flow": {
+      "footer": {
+        "description": "= Result"
+      }
+    },
+    "form": {
+      "label": "Conectar a una aptitud",
+      "subtitle": "Cuadro de diálogo de aptitud"
+    }
+  },
+  "Microsoft.BreakLoop": {
+    "form": {
+      "label": "Salir del bucle",
+      "subtitle": "Salir del bucle"
+    }
+  },
+  "Microsoft.CancelAllDialogs": {
+    "flow": {
+      "body": {
+        "description": "(Event)"
+      }
+    },
+    "form": {
+      "label": "Cancelar todos los cuadros de diálogo activos",
+      "subtitle": "Cancelar todos los cuadros de diálogo"
+    }
+  },
+  "Microsoft.ChoiceInput": {
+    "form": {
+      "label": "Aviso con varias opciones",
+      "subtitle": "Entrada de opciones"
+    }
+  },
+  "Microsoft.ConfirmInput": {
+    "form": {
+      "label": "Solicitar confirmación",
+      "subtitle": "Confirmar entrada"
+    }
+  },
+  "Microsoft.ContinueLoop": {
+    "form": {
+      "label": "Continuar bucle",
+      "subtitle": "Continuar bucle"
+    }
+  },
+  "Microsoft.DateTimeInput": {
+    "form": {
+      "label": "Solicitar una fecha o una hora",
+      "subtitle": "Entrada de fecha y hora"
+    }
+  },
+  "Microsoft.DebugBreak": {
+    "form": {
+      "label": "Interrumpir depuración"
+    }
+  },
+  "Microsoft.DeleteProperties": {
+    "form": {
+      "label": "Eliminar propiedades",
+      "subtitle": "Eliminar propiedades"
+    }
+  },
+  "Microsoft.DeleteProperty": {
+    "form": {
+      "label": "Eliminar una propiedad",
+      "subtitle": "Eliminar propiedad"
+    }
+  },
+  "Microsoft.EditActions": {
+    "form": {
+      "label": "Modificar cuadro de diálogo activo",
+      "subtitle": "Editar acciones"
+    }
+  },
+  "Microsoft.EditArray": {
+    "flow": {
+      "footer": {
+        "description": "= Result"
+      }
+    },
+    "form": {
+      "label": "Editar una propiedad de matriz",
+      "subtitle": "Editar matriz"
+    }
+  },
+  "Microsoft.EmitEvent": {
+    "flow": {
+      "body": {
+        "description": "(Event)"
+      }
+    },
+    "form": {
+      "label": "Emitir un evento personalizado",
+      "subtitle": "Emitir evento"
+    }
+  },
+  "Microsoft.EndDialog": {
+    "form": {
+      "label": "Finalizar este cuadro de diálogo",
+      "subtitle": "Finalizar diálogo"
+    }
+  },
+  "Microsoft.EndTurn": {
+    "form": {
+      "label": "Finalizar el turno",
+      "subtitle": "Finalizar el turno"
+    }
+  },
+  "Microsoft.Foreach": {
+    "form": {
+      "label": "Bucle: para cada elemento",
+      "subtitle": "Para cada uno"
+    }
+  },
+  "Microsoft.ForeachPage": {
+    "form": {
+      "label": "Bucle: para cada página (varios elementos)",
+      "subtitle": "Para cada página"
+    }
+  },
+  "Microsoft.GetActivityMembers": {
+    "flow": {
+      "body": {
+        "description": "= ActivityId"
+      },
+      "footer": {
+        "description": "= Result property"
+      }
+    }
+  },
+  "Microsoft.GetConversationMembers": {
+    "flow": {
+      "footer": {
+        "description": "= Result property"
+      }
+    }
+  },
+  "Microsoft.HttpRequest": {
+    "flow": {
+      "footer": {
+        "description": "= Result property"
+      }
+    },
+    "form": {
+      "label": "Enviar una solicitud HTTP",
+      "subtitle": "Solicitud HTTP"
+    }
+  },
+  "Microsoft.IfCondition": {
+    "form": {
+      "label": "Rama: IF/Else",
+      "subtitle": "Condición If"
+    }
+  },
+  "Microsoft.LogAction": {
+    "form": {
+      "label": "Registro en la consola",
+      "subtitle": "Acción de registro"
+    }
+  },
+  "Microsoft.NumberInput": {
+    "form": {
+      "label": "Solicitar un número",
+      "subtitle": "Entrada de número"
+    }
+  },
+  "Microsoft.OAuthInput": {
+    "flow": {
+      "footer": {
+        "description": "= Token property"
+      }
+    },
+    "form": {
+      "label": "Inicio de sesión de OAuth",
+      "subtitle": "Entrada de OAuth"
+    }
+  },
+  "Microsoft.OnActivity": {
+    "form": {
+      "label": "Actividades",
+      "subtitle": "Actividad recibida"
+    },
+    "trigger": {
+      "label": "Activities (Activity received)",
+      "submenu": {
+        "label": "Activities"
+      }
+    }
+  },
+  "Microsoft.OnAssignEntity": {
+    "form": {
+      "label": "Controlar una condición cuando se asigna una entidad",
+      "subtitle": "Actividad de EntityAssigned"
+    }
+  },
+  "Microsoft.OnBeginDialog": {
+    "form": {
+      "label": "Cuadro de diálogo iniciado",
+      "subtitle": "Iniciar evento de cuadro de diálogo"
+    },
+    "trigger": {
+      "label": "Dialog started (Begin dialog event)",
+      "submenu": {
+        "label": "Dialog events"
+      }
+    }
+  },
+  "Microsoft.OnCancelDialog": {
+    "form": {
+      "label": "Cuadro de diálogo cancelado",
+      "subtitle": "Cancelar evento de cuadro de diálogo"
+    },
+    "trigger": {
+      "label": "Dialog cancelled (Cancel dialog event)"
+    }
+  },
+  "Microsoft.OnChooseIntent": {
+    "trigger": {
+      "label": "Duplicated intents recognized"
+    }
+  },
+  "Microsoft.OnCondition": {
+    "form": {
+      "label": "Controlar una condición",
+      "subtitle": "Condición"
+    }
+  },
+  "Microsoft.OnConversationUpdateActivity": {
+    "form": {
+      "description": "Controla los eventos que se desencadenan cuando un usuario inicia una nueva conversación con el bot.",
+      "label": "Greeting",
+      "subtitle": "Actividad ConversationUpdate"
+    },
+    "trigger": {
+      "label": "Greeting (ConversationUpdate activity)"
+    }
+  },
+  "Microsoft.OnDialogEvent": {
+    "form": {
+      "label": "Eventos de diálogo",
+      "subtitle": "Evento de cuadro de diálogo"
+    },
+    "trigger": {
+      "label": "Custom events"
+    }
+  },
+  "Microsoft.OnEndOfActions": {
+    "form": {
+      "label": "Controlar una condición cuando las acciones han finalizado",
+      "subtitle": "Actividad de EndOfActions"
+    }
+  },
+  "Microsoft.OnEndOfConversationActivity": {
+    "form": {
+      "label": "Conversación finalizada",
+      "subtitle": "Actividad EndOfConversation"
+    },
+    "trigger": {
+      "label": "Conversation ended (EndOfConversation activity)"
+    }
+  },
+  "Microsoft.OnError": {
+    "form": {
+      "label": "Error",
+      "subtitle": "Evento de error"
+    },
+    "trigger": {
+      "label": "Error occurred (Error event)"
+    }
+  },
+  "Microsoft.OnEventActivity": {
+    "form": {
+      "label": "Evento recibido",
+      "subtitle": "Actividad de evento"
+    },
+    "trigger": {
+      "label": "Event received (Event activity)"
+    }
+  },
+  "Microsoft.OnHandoffActivity": {
+    "form": {
+      "label": "Entrega a un humano",
+      "subtitle": "Actividad de entrega."
+    },
+    "trigger": {
+      "label": "Handover to human (Handoff activity)"
+    }
+  },
+  "Microsoft.OnInstallationUpdateActivity": {
+    "form": {
+      "label": "Instalación actualizada",
+      "subtitle": "Actividad de instalación actualizada"
+    }
+  },
+  "Microsoft.OnIntent": {
+    "form": {
+      "label": "Intención reconocida",
+      "subtitle": "Intención reconocida"
+    },
+    "trigger": {
+      "label": "Intent recognized"
+    }
+  },
+  "Microsoft.OnInvokeActivity": {
+    "form": {
+      "label": "Conversación invocada",
+      "subtitle": "Invocar actividad"
+    },
+    "trigger": {
+      "label": "Conversation invoked (Invoke activity)"
+    }
+  },
+  "Microsoft.OnMessageActivity": {
+    "form": {
+      "label": "Mensaje recibido",
+      "subtitle": "Actividad de mensaje recibido"
+    },
+    "trigger": {
+      "label": "Message received (Message received activity)"
+    }
+  },
+  "Microsoft.OnMessageDeleteActivity": {
+    "form": {
+      "label": "Mensaje eliminado",
+      "subtitle": "Actividad de mensaje eliminado"
+    },
+    "trigger": {
+      "label": "Message deleted (Message deleted activity)"
+    }
+  },
+  "Microsoft.OnMessageReactionActivity": {
+    "form": {
+      "label": "Reacción del mensaje",
+      "subtitle": "Actividad de reacción del mensaje"
+    },
+    "trigger": {
+      "label": "Message reaction (Message reaction activity)"
+    }
+  },
+  "Microsoft.OnMessageUpdateActivity": {
+    "form": {
+      "label": "Mensaje actualizado",
+      "subtitle": "Actividad de mensaje actualizado"
+    },
+    "trigger": {
+      "label": "Message updated (Message updated activity)"
+    }
+  },
+  "Microsoft.OnQnAMatch": {
+    "trigger": {
+      "label": "QnA Intent recognized"
+    }
+  },
+  "Microsoft.OnRepromptDialog": {
+    "form": {
+      "label": "Volver a solicitar la entrada",
+      "subtitle": "Volver a solicitar el evento de cuadro de diálogo"
+    },
+    "trigger": {
+      "label": "Re-prompt for input (Reprompt dialog event)"
+    }
+  },
+  "Microsoft.OnTypingActivity": {
+    "form": {
+      "label": "El usuario está escribiendo",
+      "subtitle": "Actividad Typing"
+    },
+    "trigger": {
+      "label": "User is typing (Typing activity)"
+    }
+  },
+  "Microsoft.OnUnknownIntent": {
+    "form": {
+      "label": "Intención desconocida",
+      "subtitle": "Intención desconocida reconocida"
+    },
+    "trigger": {
+      "label": "Unknown intent"
+    }
+  },
+  "Microsoft.RepeatDialog": {
+    "form": {
+      "label": "Repetir este cuadro de diálogo",
+      "subtitle": "Repetir cuadro de diálogo"
+    }
+  },
+  "Microsoft.ReplaceDialog": {
+    "form": {
+      "label": "Reemplazar este cuadro de diálogo",
+      "subtitle": "Reemplazar cuadro de diálogo"
+    }
+  },
+  "Microsoft.SendActivity": {
+    "form": {
+      "label": "Enviar una respuesta",
+      "subtitle": "Enviar actividad"
+    }
+  },
+  "Microsoft.SendHandoffActivity": {
+    "form": {
+      "label": "Send a handoff request",
+      "subtitle": "Send Handoff Activity"
+    },
+    "menu": {
+      "label": "Send Handoff Event"
+    }
+  },
+  "Microsoft.SetProperties": {
+    "form": {
+      "label": "Establecer propiedades",
+      "subtitle": "Establecer propiedades"
+    }
+  },
+  "Microsoft.SetProperty": {
+    "form": {
+      "label": "Establecer una propiedad",
+      "subtitle": "Establecer propiedad"
+    }
+  },
+  "Microsoft.SignOutUser": {
+    "form": {
+      "label": "Cerrar sesión del usuario",
+      "subtitle": "Cerrar sesión del usuario"
+    }
+  },
+  "Microsoft.SwitchCondition": {
+    "form": {
+      "label": "Rama: cambiar (varias opciones)",
+      "subtitle": "Cambiar condición"
+    }
+  },
+  "Microsoft.TextInput": {
+    "form": {
+      "label": "Solicitar texto",
+      "subtitle": "Entrada de texto"
+    }
+  },
+  "Microsoft.ThrowException": {
+    "flow": {
+      "body": {
+        "description": "= ErrorValue"
+      }
+    },
+    "form": {
+      "label": "Iniciar una excepción",
+      "subtitle": "Iniciar una excepción"
+    }
+  },
+  "Microsoft.TraceActivity": {
+    "form": {
+      "label": "Emitir un evento de seguimiento",
+      "subtitle": "Actividad de seguimiento"
+    }
+  },
+  "Microsoft.UpdateActivity": {
+    "flow": {
+      "header": {
+        "title": "Update activity"
+      }
+    },
+    "form": {
+      "label": "Update an activity",
+      "subtitle": "Update Activity"
+    }
+  }
+}

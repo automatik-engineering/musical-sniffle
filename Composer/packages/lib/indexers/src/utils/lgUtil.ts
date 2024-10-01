@@ -1,0 +1,355 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+/**
+ * lgUtil.ts is a single place use lg-parser handle lg file operation.
+ * it's designed have no state, input text file, output text file.
+ *
+ */
+
+import { Templates, Template, Diagnostic as LGDiagnostic, ImportResolverDelegate } from 'botbuilder-lg';
+import {
+  LgTemplate,
+  lgImportResolverGenerator,
+  TextFile,
+  Diagnostic,
+  Position,
+  Range,
+  LgFile,
+  DiagnosticSeverity,
+  LgTemplateRef,
+} from '@bfc/shared';
+import formatMessage from 'format-message';
+import isEmpty from 'lodash/isEmpty';
+import cloneDeep from 'lodash/cloneDeep';
+import { SourceRange } from 'botbuilder-lg/lib/sourceRange';
+
+import { lgIndexer } from '../lgIndexer';
+import {
+  builtInFunctionErrorMessage,
+  BUILT_IN_FUNCTION_ERROR,
+  checkCustomFunctions,
+} from '../validations/expressionValidation/validation';
+
+import { getFileName } from './help';
+
+// NOTE: LGDiagnostic is defined in PascalCase which should be corrected
+function convertLGDiagnostic(d: LGDiagnostic, source: string): Diagnostic {
+  const result = new Diagnostic(d.message, source, d.severity);
+
+  const start: Position = new Position(d.range.start.line, d.range.start.character);
+  const end: Position = new Position(d.range.end.line, d.range.end.character);
+  result.range = new Range(start, end);
+
+  return result;
+}
+
+function convertLGRange(s: SourceRange): Range {
+  const start: Position = new Position(s.range.start.line, s.range.start.character);
+  const end: Position = new Position(s.range.end.line, s.range.end.character);
+
+  return new Range(start, end);
+}
+
+function templateToLgTemplate(templates: Template[]): LgTemplate[] {
+  return templates.map((t) => {
+    return {
+      name: t.name,
+      body: t.body,
+      parameters: t.parameters || [],
+      range: convertLGRange(t.sourceRange),
+      properties: t.properties,
+    };
+  });
+}
+
+// get parsed resource from lgFile, if not exist do reparse
+function getLgResource(lgFile: LgFile, importResolver?: ImportResolverDelegate) {
+  const { content, parseResult } = lgFile;
+
+  return parseResult ?? Templates.parseText(content, undefined, importResolver);
+}
+
+export function convertTemplatesToLgFile(id = '', content: string, parseResult: Templates): LgFile {
+  parseResult.diagnostics = parseResult.diagnostics.filter(
+    (diag) => !diag.message.includes('LG file must have at least one template definition.'),
+  );
+  const diagnostics = parseResult.diagnostics.map((d: LGDiagnostic) => {
+    return convertLGDiagnostic(d, id);
+  });
+
+  const templates = templateToLgTemplate(parseResult.toArray());
+  const allTemplates = templateToLgTemplate(parseResult.allTemplates);
+  const imports = parseResult.imports.map((item) => {
+    return {
+      id: getFileName(item.id),
+      path: item.id,
+      description: item.description,
+    };
+  });
+
+  return {
+    id,
+    content,
+    templates,
+    allTemplates,
+    diagnostics,
+    imports,
+    options: parseResult.options,
+    parseResult,
+    isContentUnparsed: false,
+  };
+}
+
+export function increaseNameUtilNotExist(templates: LgTemplate[], name: string): string {
+  // if duplicate, increse name with Copy1 Copy2 ...
+
+  let repeatIndex = 0;
+  let newName = name;
+
+  while (templates.findIndex((item) => item.name === newName) !== -1) {
+    repeatIndex += 1;
+    newName = name + repeatIndex.toString();
+  }
+  return newName;
+}
+
+export function updateTemplate(
+  lgFile: LgFile,
+  templateName: string,
+  template: { name?: string; parameters?: string[]; body?: string },
+  importResolver?: ImportResolverDelegate,
+): LgFile {
+  const { id } = lgFile;
+  const { name, parameters, body } = template;
+  const resource = getLgResource(lgFile, importResolver);
+  const originTemplate = resource.toArray().find((t) => t.name === templateName);
+  const templateToUpdate = {
+    name: name || originTemplate?.name || templateName,
+    parameters: parameters || originTemplate?.parameters || [],
+    body: typeof body === 'string' ? body : originTemplate?.body || '',
+  };
+
+  let templates;
+  // add if not exist
+  if (!originTemplate) {
+    templates = resource.addTemplate(templateName, templateToUpdate.parameters, templateToUpdate.body);
+    // remove if template is null
+  } else if (!template || isEmpty(template)) {
+    templates = resource.deleteTemplate(templateName);
+  } else {
+    templates = resource.updateTemplate(
+      templateName,
+      templateToUpdate.name,
+      templateToUpdate.parameters,
+      templateToUpdate.body,
+    );
+  }
+
+  return convertTemplatesToLgFile(id, templates.toString(), templates);
+}
+
+// if name exist, throw error.
+export function addTemplate(
+  lgFile: LgFile,
+  { name, parameters = [], body }: LgTemplate,
+  importResolver?: ImportResolverDelegate,
+): LgFile {
+  const { id } = lgFile;
+  const resource = getLgResource(lgFile, importResolver);
+
+  const templates = resource.addTemplate(name, parameters, body);
+  return convertTemplatesToLgFile(id, templates.toString(), templates);
+}
+
+export function addTemplates(lgFile: LgFile, templates: LgTemplate[], importResolver?: ImportResolverDelegate): LgFile {
+  const { id, content } = lgFile;
+  const resource = Templates.parseText(content, undefined, importResolver);
+  for (const { name, parameters = [], body } of templates) {
+    resource.addTemplate(name, parameters, body);
+  }
+  return convertTemplatesToLgFile(id, resource.toString(), resource);
+}
+
+// if name exist, add it anyway, with name like `${name}1` `${name}2`
+export function addTemplateAnyway(
+  lgFile: LgFile,
+  { name = 'TemplateName', parameters = [], body = '-TemplateBody' }: LgTemplate,
+  importResolver?: ImportResolverDelegate,
+): LgFile {
+  const { id } = lgFile;
+  const resource = getLgResource(lgFile, importResolver);
+  const newName = increaseNameUtilNotExist(resource.toArray(), name);
+
+  const templates = resource.addTemplate(newName, parameters, body);
+  return convertTemplatesToLgFile(id, templates.toString(), templates);
+}
+
+// if toTemplateName exist, throw error.
+export function copyTemplate(
+  lgFile: LgFile,
+  fromTemplateName: string,
+  toTemplateName: string,
+  importResolver?: ImportResolverDelegate,
+): LgFile {
+  const { id } = lgFile;
+  const resource = getLgResource(lgFile, importResolver);
+
+  const fromTemplate = resource.toArray().find((t) => t.name === fromTemplateName);
+  if (!fromTemplate) {
+    throw new Error(formatMessage('fromTemplateName does not exist'));
+  }
+  const { parameters, body } = fromTemplate;
+  const templates = resource.addTemplate(toTemplateName, parameters, body);
+  return convertTemplatesToLgFile(id, templates.toString(), templates);
+}
+
+// if toTemplateName exist, add it anyway, with name like `${toTemplateName}1` `${toTemplateName}2`
+export function copyTemplateAnyway(
+  lgFile: LgFile,
+  fromTemplateName: string,
+  toTemplateName?: string,
+  importResolver?: ImportResolverDelegate,
+): LgFile {
+  const { id } = lgFile;
+  const resource = getLgResource(lgFile, importResolver);
+  const fromTemplate = resource.toArray().find((t) => t.name === fromTemplateName);
+  if (!fromTemplate) {
+    return convertTemplatesToLgFile(id, resource.toString(), resource);
+  }
+
+  let newName = toTemplateName;
+  if (!newName) {
+    const copyName = formatMessage(`{name}_Copy`, { name: fromTemplate.name });
+    newName = increaseNameUtilNotExist(resource.toArray(), copyName);
+  }
+  const { parameters, body } = fromTemplate;
+  const templates = resource.addTemplate(newName, parameters, body);
+  return convertTemplatesToLgFile(id, templates.toString(), templates);
+}
+
+export function removeTemplate(lgFile: LgFile, templateName: string, importResolver?: ImportResolverDelegate): LgFile {
+  const { id } = lgFile;
+  const resource = getLgResource(lgFile, importResolver);
+  const templates = resource.deleteTemplate(templateName);
+  return convertTemplatesToLgFile(id, templates.toString(), templates);
+}
+
+export function removeTemplates(
+  lgFile: LgFile,
+  templateNames: string[],
+  importResolver?: ImportResolverDelegate,
+): LgFile {
+  const { id } = lgFile;
+  let resource = getLgResource(lgFile, importResolver);
+
+  const normalizedLgTemplates = templateNames
+    .map((x) => {
+      const lgTemplateRef = LgTemplateRef.parse(x);
+      return lgTemplateRef ? lgTemplateRef.name : x;
+    })
+    .filter((x) => !!x);
+
+  const generatedLgTemplateNames = getGeneratedLgTemplateNames(lgFile, normalizedLgTemplates);
+
+  [...normalizedLgTemplates, ...generatedLgTemplateNames].forEach((templateName) => {
+    resource = resource.deleteTemplate(templateName);
+  });
+  return convertTemplatesToLgFile(id, resource.toString(), resource);
+}
+
+/**
+ * This util function returns the names of all auto generated templates associated with the templates being removed.
+ * @param file Lg file that contains the templates.
+ * @param toBeRemovedLgTemplateNames Names of Lg templates that are being removed.
+ */
+const getGeneratedLgTemplateNames = (file: LgFile, toBeRemovedLgTemplateNames: string[]) => {
+  const generatedLgTemplateNames: string[] = [];
+  const lgTemplates = file.templates.filter((t) => toBeRemovedLgTemplateNames.includes(t.name) && !!t.properties);
+  for (const lgTemplate of lgTemplates) {
+    // Auto-generated templates in structured responses have the following pattern
+    // [name of the parent template]_text OR [name of the parent template]_speak OR [name of the parent template]_attachment_[random string]
+    const pattern = `${lgTemplate.name}_((text|speak)|(attachment_.+))$`;
+    // eslint-disable-next-line security/detect-non-literal-regexp
+    const regex = new RegExp(`^${pattern}`);
+    const generatedLgTemplates = file.templates.map((t) => t.name).filter((name) => regex.test(name));
+    generatedLgTemplateNames.push(...generatedLgTemplates);
+  }
+
+  return generatedLgTemplateNames;
+};
+
+export function textFromTemplate(template: LgTemplate): string {
+  const { name, parameters = [], body } = template;
+  const textBuilder: string[] = [];
+  if (name && body !== null && body !== undefined) {
+    textBuilder.push(`# ${name.trim()}`);
+    if (parameters.length) {
+      textBuilder.push(`(${parameters.join(', ')})`);
+    }
+    textBuilder.push(`\n${template.body.trim()}`);
+  }
+  return textBuilder.join('');
+}
+
+export function textFromTemplates(templates: LgTemplate[]): string {
+  const textBuilder: string[] = [];
+
+  templates.forEach((template) => {
+    textBuilder.push(`${textFromTemplate(template)}\n`);
+  });
+
+  return textBuilder.join('');
+}
+
+export function checkSingleLgTemplate(template: LgTemplate) {
+  const content = textFromTemplates([template]);
+
+  if (Templates.parseText(content).toArray().length !== 1) {
+    throw new Error(formatMessage('Not a single template'));
+  }
+}
+
+export function checkTemplate(template: LgTemplate): LGDiagnostic[] {
+  const text = textFromTemplate(template);
+  return Templates.parseText(text, '').diagnostics;
+}
+
+export function extractOptionByKey(nameOfKey: string, options: string[]): string {
+  let result = '';
+  for (const option of options) {
+    if (nameOfKey && option.includes('=')) {
+      const index = option.indexOf('=');
+      const key = option.substring(0, index).trim().toLowerCase();
+      const value = option.substring(index + 1).trim();
+      if (key === nameOfKey) {
+        result = value;
+      }
+    }
+  }
+  return result;
+}
+
+export function filterCustomFunctionError(diagnostics: Diagnostic[] = [], customFunctions: string[] = []) {
+  return diagnostics.reduce((result: Diagnostic[], d: Diagnostic) => {
+    //If the custom functions are defined in runtime, use the field from settings to filter
+    if (d.message.endsWith(BUILT_IN_FUNCTION_ERROR)) {
+      const pattern = /'.*'/;
+      const currentFunction = pattern.exec(d.message)?.[0];
+      if (currentFunction && customFunctions.some((item) => checkCustomFunctions(currentFunction, item))) {
+        return result;
+      }
+      d = cloneDeep(d);
+      d.message = builtInFunctionErrorMessage(d.message);
+      d.severity = DiagnosticSeverity.Warning;
+    }
+    result.push(d);
+    return result;
+  }, []);
+}
+
+export function parse(id: string, content: string, lgFiles: TextFile[]): LgFile {
+  const lgImportResolver = lgImportResolverGenerator(lgFiles, '.lg');
+
+  return lgIndexer.parse(content, id, lgImportResolver);
+}

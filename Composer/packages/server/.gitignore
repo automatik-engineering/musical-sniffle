@@ -1,0 +1,8 @@
+build/
+data.json
+schemas/*-pseudo.schema
+schemas/*-pseudo.uischema
+src/__tests__/__data__.json
+src/locales/*-pseudo.json
+extensions.json
+!packages/server/schemas/botproject.schema
